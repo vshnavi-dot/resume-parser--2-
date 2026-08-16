@@ -1,6 +1,23 @@
 # Resume Parser
 
+*Intern ID:* CITS8349
+*NAME:* VAISHNAVI
+*Number of Weeks:* 4
+*Project Name:* Resume Parser
+
 A simple web app that extracts structured information (name, email, phone, skills, education) from uploaded resumes (PDF/DOCX) using Flask + regex/keyword matching.
+
+
+## Project Scope
+This project was built as a 4-week internship deliverable to demonstrate a working, end-to-end resume screening tool. The scope covers:
+- Accepting resume uploads in PDF and DOCX formats through a simple web interface
+- Extracting key candidate details (name, email, phone, skills, education) using text extraction and regex/keyword matching — no external ML model required
+- Presenting the extracted results back to the user in a readable format
+- Packaging the project for easy local setup and future deployment
+
+Out of scope for this version: advanced NLP-based entity recognition, resume scoring against job descriptions, batch/bulk resume processing, and a persistent database — these are listed under Future Improvements below as natural next steps.
+
+
 
 ## Features
 - Upload a `.pdf` or `.docx` resume through a browser
@@ -32,7 +49,7 @@ resume-parser/
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/tkp278/resume-parser.git
+   git clone https://github.com/vshnavi-dot/resume-parser.git
    cd resume-parser
    ```
 
@@ -57,4 +74,4 @@ resume-parser/
 - Export parsed results as JSON/CSV
 
 ## Author
-Tejas Poojary — [GitHub](https://github.com/tkp278) | [LinkedIn](https://linkedin.com/in/tejas-poojary)
+Vaishnavi — [GitHub](https://github.com/vshnavi-dot) | [LinkedIn](https://www.linkedin.com/in/vaishnavi-acharya-1955a933b?utm_source=share_via&utm_content=profile&utm_medium=member_android)
