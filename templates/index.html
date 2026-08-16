@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume Parser</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #f7f7f9;
+      color: #222;
+    }
+    h1 { color: #2c3e50; }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    input[type="file"] { margin: 10px 0; }
+    button {
+      background: #2c3e50;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover { background: #1a252f; }
+    .error { color: #c0392b; font-weight: bold; }
+    .field { margin: 8px 0; }
+    .field strong { color: #2c3e50; }
+    ul { margin: 5px 0; padding-left: 20px; }
+    .preview {
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 0.85em;
+      white-space: pre-wrap;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>📄 Resume Parser</h1>
+
+  <div class="card">
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <label for="resume">Upload a resume (PDF or DOCX, max 5MB):</label><br>
+      <input type="file" id="resume" name="resume" accept=".pdf,.docx" required>
+      <br>
+      <button type="submit">Parse Resume</button>
+    </form>
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+  </div>
+
+  {% if result %}
+  <div class="card">
+    <h2>Results for: {{ filename }}</h2>
+    <div class="field"><strong>Name:</strong> {{ result.name or "Not found" }}</div>
+    <div class="field"><strong>Email:</strong> {{ result.email or "Not found" }}</div>
+    <div class="field"><strong>Phone:</strong> {{ result.phone or "Not found" }}</div>
+
+    <div class="field">
+      <strong>Skills:</strong>
+      {% if result.skills %}
+        <ul>
+          {% for skill in result.skills %}
+            <li>{{ skill }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        Not found
+      {% endif %}
+    </div>
+
+    <div class="field">
+      <strong>Education:</strong>
+      {% if result.education %}
+        <ul>
+          {% for edu in result.education %}
+            <li>{{ edu }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        Not found
+      {% endif %}
+    </div>
+
+    <div class="field">
+      <strong>Raw text preview:</strong>
+      <div class="preview">{{ result.raw_text_preview }}</div>
+    </div>
+  </div>
+  {% endif %}
+</body>
+</html>
